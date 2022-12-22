@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>CORS 테스트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <h1 id="sound"></h1>
+    <input id="name" type="text" />
+    <button onclick="getSound()">API 요청</button>
+    <script>
+      function getSound() {
+        const name = document.getElementById("name").value;
+        fetch(`http://port-0-node-animal-sound-3sojxk2ilbymy3sb.gksl2.cloudtype.app/sound/${name}`)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data.sound);
+            document.getElementById("sound").innerHTML = data.sound;
+          });
+      }
+    </script>
+  </body>
+</html>
